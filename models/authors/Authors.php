@@ -3,6 +3,7 @@
 namespace app\models\authors;
 
 use Yii;
+use app\models\books\Books;
 
 /**
  * This is the model class for table "authors".
@@ -12,6 +13,7 @@ use Yii;
  */
 class Authors extends \yii\db\ActiveRecord
 {
+    var $books;
     /**
      * @inheritdoc
      */
@@ -43,9 +45,18 @@ class Authors extends \yii\db\ActiveRecord
     }
     public static function getAll(){
         $elements = self::find()->all();
+        foreach($elements as $element => $val){
+            $book = Books::find()
+                ->where(['author' => $val->id])
+                ->all();
+            $val->books = $book;
+        }
         return $elements;
     }
-    static function getBooks(){
-        return $this->hasOne(Books::className(), ['author' => 'id']);
-    }
+    /*
+         * не работает
+         *static function getBooks(){
+            return $this->hasOne(Books::className(), ['author' => 'id']);
+        }
+    */
 }

@@ -7,11 +7,9 @@ use app\models\authors\Authors;
 
 class AuthorsController extends Controller {
     public function actionIndex(){
-        $elements = Authors::find()->all();
-        $books = Authors::getBooks();
+        $elements = Authors::getAll();
         return $this->render('index', [
             'authors'=>$elements,
-            'books'=>$books
         ]);
     }
 }
