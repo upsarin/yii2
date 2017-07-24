@@ -41,4 +41,11 @@ class Authors extends \yii\db\ActiveRecord
             'name' => 'Name',
         ];
     }
+    public static function getAll(){
+        $elements = self::find()->all();
+        return $elements;
+    }
+    static function getBooks(){
+        return $this->hasOne(Books::className(), ['author' => 'id']);
+    }
 }

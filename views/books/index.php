@@ -1,9 +1,9 @@
 <h3>Books</h3>
-<? if(count($books)){ ?>
-    <? foreach($books as $item){ ?>
+<?php if(count($books)): ?>
+    <?php foreach($books as $element => $val): ?>
         <div class="well">
-            <h5><?php echo $item->title;?></h5>
-            <div class="author"><?php echo $item->author;?></div>
+            <h3><?=$val->title?></h3>
+            <p><?=$val->author_name?></p>
         </div>
-    <? } ?>
-<? } ?>
+    <?php endforeach ?>
+<?php endif ?>

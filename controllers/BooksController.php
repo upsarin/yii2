@@ -6,7 +6,7 @@ use app\models\books\Books;
 
 class BooksController extends Controller {
     public function actionIndex(){
-        $model = Books::find()->all();
-        return $this->render('index', ['books'=>$model]);
+        $elements = Books::getAll();
+        return $this->render('index', ['books'=>$elements]);
     }
 }
