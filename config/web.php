@@ -12,6 +12,9 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'modules' => [
+        'api' => [
+            'class' => 'app\modules\api\Api',
+        ],
         'admin' => [
             'class' => 'app\modules\admin\Module',
         ],
@@ -62,6 +65,8 @@ $config = [
             'rbac/*',
             'books/*',
             'authors/*',
+            'gii/*',
+            'api/*',
         ]
     ],
     'components' => [
@@ -71,6 +76,9 @@ $config = [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'JDPj455SjmwINHXi3aG1LID59a3_kfdo',
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ]
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -104,6 +112,7 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                //['class' => 'api\rest\UrlRule', 'controller' => 'books'],
             ],
         ],
 
